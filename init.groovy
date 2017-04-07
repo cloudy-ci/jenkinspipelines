@@ -7,11 +7,12 @@ pipelineJob('pipeline2') {
         cpsScm {
             scm {
                 git {
-                    remote { 
+                    remote {
                         name('origin')
                         url('https://github.com/martinhoefling/jenkinspipelines.git')
-                    }    
-                branch('*/${BRANCH}')
+                    }
+                    branch('*/${BRANCH}')
+                }
             }
             scriptPath('pipelines/pipeline2')
         }
