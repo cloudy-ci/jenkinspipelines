@@ -42,6 +42,27 @@ pipelineJob('pipeline/pipeline2') {
     }
 }
 
+pipelineJob('dockerize_baseimage') {
+    displayName('Dockerize Baseimage')
+    parameters {
+        choiceParam('BRANCH', ['master', 'stable'])
+    }
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        name('origin')
+                        url('https://github.com/martinhoefling/jenkinspipelines.git')
+                    }
+                    branch('*/${BRANCH}')
+                }
+            }
+            scriptPath('pipelines/baseimage')
+        }
+    }
+}
+
 multibranchPipelineJob('pipeline/jenkinsfile') {
     displayName('Jenkinsfile Pipeline')
     branchSources {
