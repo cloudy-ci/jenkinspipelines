@@ -1,9 +1,27 @@
-folder('pipelines') {
+folder('pipeline') {
     displayName('Pipeline Jobs')
     description('A folder containing pipelines')
 }
 
-pipelineJob('pipelines/pipeline2') {
+pipelineJob('pipeline/pipeline1') {
+    displayName('Pipeline 1')
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        name('origin')
+                        url('https://github.com/martinhoefling/jenkinspipelines.git')
+                    }
+                    branch('*/master')
+                }
+            }
+            scriptPath('pipelines/pipeline1')
+        }
+    }
+}
+
+pipelineJob('pipeline/pipeline2') {
     displayName('Pipeline 2 (master/stable)')
     parameters {
         choiceParam('BRANCH', ['master', 'stable'])
@@ -24,28 +42,7 @@ pipelineJob('pipelines/pipeline2') {
     }
 }
 
-pipelineJob('pipelines/pipeline1') {
-    displayName('Pipeline 1')
-    parameters {
-        choiceParam('BRANCH', ['master', 'stable'])
-    }
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        name('origin')
-                        url('https://github.com/martinhoefling/jenkinspipelines.git')
-                    }
-                    branch('*/${BRANCH}')
-                }
-            }
-            scriptPath('pipelines/pipeline1')
-        }
-    }
-}
-
-multibranchPipelineJob('pipelines/jenkinsfile') {
+multibranchPipelineJob('pipeline/jenkinsfile') {
     displayName('Jenkinsfile Pipeline')
     branchSources {
         git {
