@@ -10,7 +10,7 @@ podTemplate(label: 'dockerizer', containers: [
     node ('dockerizer') {
         stage 'Build base container'
         container('docker') {
-            sh 'cd docker/base; docker build -t localhost:5000/base .; docker push localhost:5000/base'
+            sh 'pwd;ls;cd docker/base; docker build -t localhost:5000/base .; docker push localhost:5000/base'
         }
     }
 }
