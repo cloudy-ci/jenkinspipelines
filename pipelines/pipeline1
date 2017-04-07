@@ -17,7 +17,7 @@ podTemplate(label: 'mongopython', containers: [
             sh """
             sleep 2
             
-            python -c "from pymongo import MongoClient;client = MongoClient('localhost', 27017);print('connected')"
+            python -c "from pymongo import MongoClient;client = MongoClient('localhost', 27017);print('connected p1')"
             """
         }
 
