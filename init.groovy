@@ -1,5 +1,5 @@
 pipelineJob('pipeline2') {
-    displayName: 'Pipeline 2'
+    displayName('Pipeline 2')
     parameters {
         choiceParam('BRANCH', ['master', 'stable'])
     }
