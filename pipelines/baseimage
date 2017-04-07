@@ -3,7 +3,8 @@ podTemplate(label: 'dockerizer', containers: [
     containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:2.62-alpine', args: '${computer.jnlpmac} ${computer.name}'),
     containerTemplate(name: 'docker', image: 'docker:1.11.1', command: 'cat', ttyEnabled: true),
   ], volumes: [
-          hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+          hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+          emptyDirVolume(mountPath: '/home/jenkins/workspace', memory: false),
   ]) {
 
     node ('dockerizer') {
