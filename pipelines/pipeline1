@@ -13,11 +13,11 @@ podTemplate(label: 'mongopython', containers: [
 
         stage 'Pymongo connect'
         container('python') {
-            stage 'Connect to mongodb'
+            stage 'Connect to ugly mongodb'
             sh """
             sleep 2
             
-            python -c "from pymongo import MongoClient;client = MongoClient('localhost', 27017);print('connected')"
+            python -c "from pymongo import MongoClient;client = MongoClient('localhost', 27017);print('connected you bastard!')"
             """
         }
 
