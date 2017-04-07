@@ -1,4 +1,9 @@
-pipelineJob('pipeline2') {
+folder('pipelines') {
+    displayName('Pipeline Jobs')
+    description('A folder containing pipelines')
+}
+
+pipelineJob('pipelines/pipeline2') {
     displayName('Pipeline 2 (master/stable)')
     parameters {
         choiceParam('BRANCH', ['master', 'stable'])
@@ -19,7 +24,7 @@ pipelineJob('pipeline2') {
     }
 }
 
-pipelineJob('pipeline1') {
+pipelineJob('pipelines/pipeline1') {
     displayName('Pipeline 1')
     parameters {
         choiceParam('BRANCH', ['master', 'stable'])
@@ -40,7 +45,8 @@ pipelineJob('pipeline1') {
     }
 }
 
-multibranchPipelineJob('Jenkinsfile Pipeline') {
+multibranchPipelineJob('pipelines/jenkinsfile') {
+    displayName('Jenkinsfile Pipeline')
     branchSources {
         git {
             remote('https://github.com/martinhoefling/jenkinspipelines.git')
