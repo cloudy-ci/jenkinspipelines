@@ -8,6 +8,7 @@ podTemplate(label: 'dockerizer', containers: [
   ]) {
 
     node ('dockerizer') {
+        git url: 'https://github.com/martinhoefling/jenkinspipelines.git'
         stage 'Build base container'
         container('docker') {
             sh 'pwd;ls;cd docker/base; docker build -t localhost:5000/base .; docker push localhost:5000/base'
