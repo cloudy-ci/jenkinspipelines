@@ -16,7 +16,7 @@ podTemplate(label: 'mongopython', containers: [
         container('python') {
             stage 'Connect to mongodb'
             sh """
-            sleep 3
+            sleep 2
             
             python -c "from pymongo import MongoClient;client = MongoClient('localhost', 27017);print('connected')"
             """
